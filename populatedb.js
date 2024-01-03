@@ -29,10 +29,6 @@ async function main() {
 	console.log('Debug: Closing mongoose');
 	mongoose.connection.close();
 }
-  
-// We pass the index to the ...Create functions so that, for example,
-// genre[0] will always be the Fantasy genre, regardless of the order
-// in which the elements of promise.all's argument complete.
 
 async function userCreate(index, first_name, last_name, username, password, membershipStatus) {
 	const userDetail = { 
