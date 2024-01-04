@@ -1,5 +1,34 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
+
+  div.h-full.w-full.flex.flex-col.items-center
+    h1(style='font-size:2em;') #{title}
+    if user 
+      p welcome #{user.first_name} 
+      a(href='/message/new') New message 
+    if !isMember
+      p Note: you must be a member to view post's author and time.
+      
+      table.w-full(style='margin-top: 2rem;')
+        tbody
+          each message in messages 
+            tr.bg-neutral-200(class="even:bg-neutral-300")
+              td.pl-4.py-4
+                a(href=message.url) #{message.title}
+              td 
+                if user && user.membershipStatus !== 'none'
+                  p #{message.formatted_date}
+                  if user.id === message.user.id 
+                    p by You 
+                  else 
+                    p by #{message.user.username}
+                else 
+                  p Date by:
+                  p Post by:
+
+                if user && user.membershipStatus === 'admin'
+                  a(href=message.url+'/delete') Delete
+
+
+    
+  

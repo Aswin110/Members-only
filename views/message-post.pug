@@ -1,0 +1,8 @@
+extends layout
+block content
+
+    h1.pl-4.py-4 #{message.title} 
+    p #{message.summary}
+    if isMember 
+        p #{message.user.username}
+        p #{message.formatted_date}

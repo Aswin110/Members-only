@@ -3,26 +3,21 @@ html.h-full
   head
     title= title
     link(rel='stylesheet' href='/stylesheets/style.css')
-    link(
-      rel="stylesheet",
-      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    )
+    link(rel='stylesheet' href='/stylesheets/tailwind.css')
     meta(name="viewport" content="width=device-width, initial-scale=1")
-
-  include mixins/navLink.pug
-
-  body.h-full.flex.flex-col(class="text-black/90 bg-neutral-50")
-    header.z-10.sticky.top-0.px-6.py-3.flex.justify-between.flex-wrap.gap-3.bg-neutral-50.border-b.border-b-slate-200
-      a.font-bold.text-gray-700(href="/") #[span.text-indigo-500 Members]Only
-
+  body.h-full.flex.flex-col
+    header.sticky.top-0.px-6.py-3.flex.justify-between.flex-wrap
+      a(href="/") MembersOnly
       nav
         ul.flex.gap-4
           if !user
-            +navLink('Login')(href="/login")
-            +navLink('Sign Up')(href="/signup")
+            li 
+              a(href="/login") Login
+            li
+              a(href="/signup") Sign Up
           else 
             if user.membershipStatus === 'none'
-              a(href="/user/member") Become a Member 
+              a(href="/user/member") Be a Member 
             else if (user.membershipStatus === 'member')
               a(href="/user/admin") Become an Admin
 
@@ -38,4 +33,4 @@ html.h-full
     .py-5.px-7.max-w-7xl.grow.w-full.mx-auto
       block content
 
-    script(src="/scripts/index.js" type="text/javascript") 
+    script(src="/javascripts/index.js" type="text/javascript") 
