@@ -4,11 +4,11 @@ block content
   div.h-full.w-full.flex.flex-col.items-center
     h1(style='font-size:2em;') #{title}
     if user 
-      p welcome #{user.first_name} 
+      p.px-4.py-2 welcome #{user.first_name} 
       a(href='/message/new') New message 
     if !isMember
-      p Note: you must be a member to view post's author and time.
-      
+      p.px-4.py-2 Note: you must be a member to view post's author and time.
+    
       table.w-full(style='margin-top: 2rem;')
         tbody
           each message in messages 

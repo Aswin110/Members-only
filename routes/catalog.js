@@ -7,6 +7,8 @@ const userController = require('../controllers/userControllers');
 
 router.get('/', indexController.indexPage);
 
+router.get('/logout', authController.logout_post);
+
 router.get('/message/new', messageControllers.message_new_get);
 
 router.post('/message/new', messageControllers.message_new_post);

@@ -3,6 +3,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 const session = require('express-session');
+const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
@@ -36,6 +37,7 @@ app.set('view engine', 'pug');
 app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 passport.use(
 	new  LocalStrategy(async(username, password, done) => {

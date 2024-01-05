@@ -42,7 +42,7 @@ exports.message_new_post = [
 			next(err);
 		}
 
-		errors = validationResult(req);
+		const errors = validationResult(req);
 
 		const message = new Message({
 			title: req.body.title,
@@ -50,7 +50,7 @@ exports.message_new_post = [
 			user: req.user.id,
 		});
 
-		if (errors.isEmpty()) {
+		if (!errors.isEmpty()) {
 			res.render('new-message',{
 				title: 'New message',
 				message: message,

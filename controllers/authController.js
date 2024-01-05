@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 exports.login_get = asyncHandler(async(req, res, next)=> {
 	res.render('log-in-form', {
 		title: 'Log in',
+		errors: req.flash('error')
 	});
 });
 
@@ -15,6 +16,7 @@ exports.login_post = [
 	passport.authenticate('local', {
 		successRedirect: '/',
 		failureRedirect: '/login',
+		failureFlash: true,
 	})
 ];
 
@@ -96,3 +98,12 @@ exports.signup_post = [
 		failureRedirect: '/',
 	}),
 ];
+
+exports.logout_post = asyncHandler(async(req, res, next) => {
+	req.logout((err) => {
+		if (err) {
+			return next(err);
+		}
+		res.redirect('/');
+	});
+});
