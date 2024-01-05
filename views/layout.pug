@@ -17,9 +17,9 @@ html.h-full
               a(href="/signup") Sign Up
           else 
             if user.membershipStatus === 'none'
-              a.px-4.py-2(href="/user/member") Be a Member 
+              a.px-4.py-2(href="/member") Be a Member 
             else if (user.membershipStatus === 'member')
-              a.px-4.py-2(href="/user/admin") Become an Admin
+              a.px-4.py-2(href="/admin") Become an Admin
 
             
             p.px-4.py-2 Membership Status: #[strong=user.membershipStatus]

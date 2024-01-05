@@ -9,6 +9,6 @@ block content
                 
                 label(for="summary") Summary: 
                 input#summary(type='textarea' readonly name = 'summary' placeholder='Summary' required='true' value=(undefined===message?'':message.summary) style='border: 1px solid #ccc; border-radius: 4px; padding: 8px; margin-bottom: 10px;')
-        if isMember 
-            p by: #[strong=message.user.username]
-            p on:#[strong=message.formatted_date]
+                button(type='submit' ) Delete
+
+    

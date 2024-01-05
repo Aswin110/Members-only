@@ -63,10 +63,16 @@ exports.message_new_post = [
 	}),
 ];
 
-exports.message_delete_get = asyncHandler(async(req, res, next)=> {
-	res.send('delete message get page not implemented');
+exports.message_delete_get = asyncHandler(async (req, res, next) => {
+	const message = await Message.findById(req.params.id).exec();
+	res.render('delete-message', {
+		title: 'Delete',
+		message: message,
+	});
 });
 
+
 exports.message_delete_post = asyncHandler(async(req, res, next)=> {
-	res.send('delete message post page not implemented');
+	await Message.findByIdAndDelete(req.params.id).exec();
+	res.redirect('/');
 });

@@ -27,7 +27,7 @@ router.get('/signup', authController.signup_get);
 
 router.post('/signup', authController.signup_post);
 
-router.get('/user/member', userController.member_get);
+router.get('/member', userController.member_get);
 
 router.post('/member', userController.member_post);
 

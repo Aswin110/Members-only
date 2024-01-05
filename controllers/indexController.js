@@ -5,7 +5,7 @@ const User = require('../models/user');
 
 exports.indexPage = asyncHandler(async (req, res, next) => {
 	const messages = await Message.find()
-		.sort({ createdAt: 'descending' })
+		.sort({time:-1})
 		.populate('user')
 		.exec();
   

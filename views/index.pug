@@ -9,25 +9,25 @@ block content
     if !isMember
       p.px-4.py-2 Note: you must be a member to view post's author and time.
     
-      table.w-full(style='margin-top: 2rem;')
-        tbody
-          each message in messages 
-            tr.bg-neutral-200(class="even:bg-neutral-300")
-              td.pl-4.py-4
-                a(href=message.url) #{message.title}
-              td 
-                if user && user.membershipStatus !== 'none'
-                  p #{message.formatted_date}
-                  if user.id === message.user.id 
-                    p by You 
-                  else 
-                    p by #{message.user.username}
+    table.w-full(style='margin-top: 2rem;')
+      tbody
+        each message in messages 
+          tr.bg-neutral-200(class="even:bg-neutral-300")
+            td.pl-4.py-4
+              a(href=message.url) #{message.title}
+            td 
+              if user && user.membershipStatus !== 'none'
+                p #{message.formatted_date}
+                if user.id === message.user.id 
+                  p by You 
                 else 
-                  p Date by:
-                  p Post by:
+                  p by #{message.user.username}
+              else 
+                p Date by:
+                p Post by:
 
-                if user && user.membershipStatus === 'admin'
-                  a(href=message.url+'/delete') Delete
+              if user && user.membershipStatus === 'admin'
+                a(href=message.url+'/delete') Delete
 
 
     

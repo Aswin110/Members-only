@@ -1,2 +1,10 @@
 extends layout
 block content
+    .m-auto.flex.flex-col.items-center
+        h1.px-4.py-2= title
+        form.flex.flex-col.gap-2(action='/admin' method='POST')
+            label(for="password") Password: 
+            input#password(type='password' name = 'password' placeholder='Admin password' required='true' value=(undefined===password?'':password) style='border: 1px solid #ccc; border-radius: 4px; padding: 8px; margin-bottom: 10px;')
+            button.px-4.py-2(type='submit' ) Submit
+
+        p.px-4.py-2=error
