@@ -10,4 +10,10 @@ const UserSchema = new Schema({
 	membershipStatus: { type:String, enum: ['member', 'admin', 'none'], default:'none'},
 });
 
+UserSchema.statics.isUsernameTaken = async function isUsernameTaken(username) {
+	return this.exists({ username })
+		.collation({ locale: 'en', strength: 2 })
+		.exec();
+};
+
 module.exports = mongoose.model('User', UserSchema);

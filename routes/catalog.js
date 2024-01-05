@@ -7,11 +7,11 @@ const userController = require('../controllers/userControllers');
 
 router.get('/', indexController.indexPage);
 
-router.get('/message/:id', messageControllers.messageDetail);
-
 router.get('/message/new', messageControllers.message_new_get);
 
 router.post('/message/new', messageControllers.message_new_post);
+
+router.get('/message/:id', messageControllers.messageDetail);
 
 router.get('/message/:id/delete', messageControllers.message_delete_get);
 
@@ -25,7 +25,7 @@ router.get('/signup', authController.signup_get);
 
 router.post('/signup', authController.signup_post);
 
-router.get('/member', userController.member_get);
+router.get('/user/member', userController.member_get);
 
 router.post('/member', userController.member_post);
 
