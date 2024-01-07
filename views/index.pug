@@ -5,30 +5,26 @@ block content
     h1(style='font-size:2em;') #{title}
     if user 
       p.px-4.py-2 welcome #{user.first_name} 
-      a(href='/message/new') New message 
+      a.button(href='/message/new') New message 
     if !isMember
       p.px-4.py-2 Note: you must be a member to view post's author and time.
     
-    table.w-full(style='margin-top: 2rem;')
+    table.w-full.table(style='margin-top: 2rem;')
       tbody
         each message in messages 
           tr.bg-neutral-200(class="even:bg-neutral-300")
             td.pl-4.py-4
               a(href=message.url) #{message.title}
-            td 
+            td.px-4.py-2 
               if user && user.membershipStatus !== 'none'
                 p #{message.formatted_date}
                 if user.id === message.user.id 
-                  p by You 
+                  p by #[strong You ]
                 else 
-                  p by #{message.user.username}
+                  p by #[strong= message.user.username]
               else 
                 p Date by:
                 p Post by:
 
               if user && user.membershipStatus === 'admin'
-                a(href=message.url+'/delete') Delete
-
-
-    
-  
+                a.button(href=message.url+'/delete') Delete

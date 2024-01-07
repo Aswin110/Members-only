@@ -11,6 +11,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const dotenv = require('dotenv');
 const User = require('./models/user');
+const compression = require('compression');
+const helmet = require('helmet');
+const rateLimiter = require('express-rate-limit');
+
+const limiter = rateLimiter({
+	windowMs: 1 * 60 * 1000, // 1 minutes
+	max: 100,
+});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -78,10 +86,13 @@ app.use((req, res, next)=> {
 	next();
 });
 
+app.use(helmet());
+app.use(limiter);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // app.use('/', indexRouter);

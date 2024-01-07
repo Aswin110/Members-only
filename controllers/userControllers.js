@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const message = require('../models/message');
 const User = require('../models/user');
 const {body, validationResult} = require('express-validator');
+const debug = require('debug')('user');
 
 exports.member_get = asyncHandler(async(req, res, next)=> {
 	if (!req.user) res.redirect('/login');
@@ -26,13 +27,13 @@ exports.member_post =asyncHandler( async(req, res, next) => {
 			await req.user.save();
 			res.redirect('/');
 		} else {
+			debug('user not found on locals');
 			const err = new Error('User not found');
 			err.status = 400;
 			next(err);
 		}
 	}
 });
-
 
 exports.admin_get = asyncHandler(async(req, res, next)=> {
 	if (!req.user) res.redirect('/login');
@@ -57,6 +58,7 @@ exports.admin_post = asyncHandler(async(req, res, next)=> {
 			await req.user.save();
 			res.redirect('/');
 		} else {
+			debug('user not found on locals');
 			const err = new Error('User not found');
 			err.status = 400;
 			next(err);

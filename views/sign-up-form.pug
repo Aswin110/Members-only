@@ -18,7 +18,7 @@ block content
             label(for="confirmPassword") Confirm Password: 
             input#confirmPassword(type='password' name = 'confirmPassword' placeholder='Confirm Password' required='true' value=(undefined===confirmPassword?'':confirmPassword) style='border: 1px solid #ccc; border-radius: 4px; padding: 8px; margin-bottom: 10px;')
             
-            button(type='submit' ) Submit
+            button.button(type='submit' ) Submit
 
         if errors 
             ul 
