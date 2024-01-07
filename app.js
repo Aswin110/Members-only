@@ -43,7 +43,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(session({ 
-	secret: process.env.SECRET || 'keyboard',
+	secret: process.env.SECRET,
 	resave: false,
 	saveUninitialized: true
 }));

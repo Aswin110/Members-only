@@ -3,6 +3,7 @@ start the project creating a skelton project with express.
 
 setting up a Node development environment.
 
+MEMBERSHIP = 'qwertyui'
 
 ## Deployment
 
