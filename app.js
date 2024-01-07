@@ -42,7 +42,11 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(session({ secret: process.env.SECRET, resave: false, saveUninitialized: true }));
+app.use(session({ 
+	secret: process.env.SECRET || 'keyboard',
+	resave: false,
+	saveUninitialized: true
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
